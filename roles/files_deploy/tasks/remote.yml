@@ -1,0 +1,4 @@
+---
+# Remote tasks
+
+- include: task/remote/deploy.yml

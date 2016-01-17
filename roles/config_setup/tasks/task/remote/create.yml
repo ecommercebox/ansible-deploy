@@ -1,0 +1,14 @@
+---
+# Create on environment
+
+- name: Create config directory
+  file:
+    path="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value | dirname }}"
+    state=directory
+  with_dict: config | default({})
+
+- name: Create config file
+  template:
+    src="{{ playbook_dir }}/templates/{{ item.value }}.j2"
+    dest="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value }}"
+  with_dict: config | default({})

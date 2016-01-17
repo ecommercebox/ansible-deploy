@@ -1,0 +1,30 @@
+---
+# Deploy database to environment
+
+- name: "Deploy environment database"
+  hosts: webserver
+  any_errors_fatal: true
+
+  vars_files:
+    - vars/path.yml
+    - vars/environments.yml
+    - vars/database.yml
+
+  vars_prompt:
+    - name: "env_src"
+      prompt: "Environment source"
+      private: no
+    - name: "env_dest"
+      prompt: "Environment destination"
+      private: no
+    - name: "site"
+      prompt: "Environment site"
+      default: "default"
+      private: no
+
+  roles:
+    - { role: env_requirements, env: "{{ env_src }}" }
+    - { role: db_requirements, env: "{{ env_src }}" }
+    - { role: env_requirements, env: "{{ env_dest }}" }
+    - { role: db_requirements, env: "{{ env_dest }}" }
+    - { role: db_deploy, env_src: "{{ env_src }}", env_dest: "{{ env_dest }}" }

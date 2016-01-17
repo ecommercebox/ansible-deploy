@@ -1,0 +1,8 @@
+---
+# Environment controller
+
+- include: local.yml
+  when: env_src == 'local' and env_dest in environments
+
+- include: remote.yml
+  when: env_src in environments and env_dest in environments

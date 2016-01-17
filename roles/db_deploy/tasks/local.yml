@@ -1,0 +1,5 @@
+---
+# Local tasks
+
+- include: task/local/deploy.yml
+- include: task/local/clean.yml

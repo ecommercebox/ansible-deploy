@@ -1,0 +1,27 @@
+---
+# Backup environment files
+
+- name: Backup files on environment.
+  hosts: webserver
+  any_errors_fatal: true
+
+  vars_files:
+    - vars/path.yml
+    - vars/environments.yml
+    - vars/config.yml
+    - vars/files.yml
+    - vars/database.yml
+
+  vars_prompt:
+    - name: "env"
+      prompt: "Environment source"
+      private: no
+    - name: "site"
+      prompt: "Environment site"
+      default: "default"
+      private: no
+
+  roles:
+    - { role: env_requirements }
+    - { role: files_requirements }
+    - { role: files_backup }

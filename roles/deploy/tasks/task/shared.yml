@@ -1,0 +1,15 @@
+---
+# Ensure symlinks target paths is absent
+
+- name: Ensure shared paths are absent in public
+  file:
+    state=absent
+    path={{ deploy_release_path.stdout }}/{{ item }}
+  with_items: path_shared_paths
+
+- name: Create softlinks for shared paths
+  file:
+    state=link
+    path={{ deploy_release_path.stdout }}/{{ item }}
+    src={{ path_root['remote'] }}/{{ env_dest }}/shared/{{ item }}
+  with_items: path_shared_paths

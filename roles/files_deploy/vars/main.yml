@@ -1,0 +1,7 @@
+---
+# Role variables
+
+files_deploy_remote_src_path: "{{ path_root['remote'] }}/{{ env_src }}/shared/{{ files[site] }}"
+files_deploy_remote_dest_path: "{{ path_root['remote'] }}/{{ env_dest }}/shared/{{ files[site] }}/../"
+files_deploy_local_src_path: "{{ path_root['local'] }}/{{ path_public }}/{{ files[site] }}"
+files_deploy_local_dest_path: "{{ path_root['remote'] }}/{{ env_dest }}/shared/{{ files[site] }}/../"

@@ -1,0 +1,15 @@
+---
+# Create remote environment
+
+- name: "Create database"
+  mysql_db:
+    name={{ database[env][item.key]['db_name'] }}
+    login_user={{ database[env][item.key]['db_user'] }}
+    login_password={{ database[env][item.key]['db_pass'] }}
+    state=present
+  with_dict: database[env] | default({})
+
+- name: "Create remote db backup path"
+  file:
+    state=directory
+    path="{{ path_root['remote'] }}/{{ env }}/{{ path_backups }}/{{ path_database_backups }}"

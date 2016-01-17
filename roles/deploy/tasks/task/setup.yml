@@ -1,0 +1,20 @@
+---
+# Setup folders
+
+- name: Set releases path
+  command: echo "{{ path_root['remote'] }}/{{ env_dest }}/{{ path_version }}"
+  register: deploy_releases_path
+
+- name: Ensure releases folder exists
+  file:
+    state=directory
+    path={{ deploy_releases_path.stdout }}
+
+- name: Set shared path
+  command: echo "{{ path_root['remote'] }}/{{ env_dest }}/shared"
+  register: deploy_shared_path
+
+- name: Ensure shared elements folder exists
+  file:
+    state=directory
+    path={{ deploy_shared_path.stdout }}

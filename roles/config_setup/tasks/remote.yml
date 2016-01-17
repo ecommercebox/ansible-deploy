@@ -1,0 +1,5 @@
+---
+# Remote tasks
+
+- include: task/remote/check.yml
+- include: task/remote/create.yml

@@ -1,0 +1,8 @@
+---
+# Environment controller
+
+- include: local.yml
+  when: env == 'local'
+
+- include: remote.yml
+  when: env in environments

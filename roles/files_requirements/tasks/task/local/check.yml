@@ -1,0 +1,8 @@
+---
+# Check local environment
+
+- name: Check local environment files path
+  local_action: stat
+    path="{{ path_root['local'] }}/{{ path_public }}/{{ files[site] }}"
+  register: files_path
+  failed_when: "files_path.stat.exists == false"

@@ -1,0 +1,11 @@
+---
+# Local tasks
+
+- include: task/check.yml
+- include: task/setup.yml
+- include: task/path.yml
+- include: task/local/deploy.yml
+- include: task/push.yml
+- include: task/symlink.yml
+- include: task/shared.yml
+- include: task/clean.yml

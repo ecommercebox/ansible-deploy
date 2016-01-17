@@ -1,0 +1,9 @@
+---
+# Environment rollback check
+# @todo Check for multiple releases
+
+- name: Check remote environment releases path
+  stat:
+    path="{{ path_root['remote'] }}/{{ env }}/{{ path_version }}"
+  register: env_public_path
+  failed_when: env_public_path.stat.exists == false

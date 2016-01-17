@@ -1,0 +1,22 @@
+---
+# Setup environment for rollback
+
+- name: Get releases path
+  command: echo "{{ path_root['remote'] }}/{{ env }}/{{ path_version }}"
+  register: rollback_releases_path
+
+- name: Get number of releases
+  shell: echo `ls {{ rollback_releases_path.stdout }} -1t | wc -l`
+  register: rollback_versions_count
+
+- name: Check if there is more than one release
+  fail: msg="Could not roll back the code because there is no prior release"
+  when: rollback_versions_count.stdout|int <= 1
+
+- name: Get current release version
+  shell: echo `ls {{ rollback_releases_path.stdout }} -1t | head -n 1`
+  register: rollback_current_release_version
+
+- name: Get previous releases version
+  shell: echo `ls {{ rollback_releases_path.stdout }} -1t | head -n 2 | tail -n 1`
+  register: rollback_previous_release_version

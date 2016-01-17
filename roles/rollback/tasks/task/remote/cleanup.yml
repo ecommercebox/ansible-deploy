@@ -1,0 +1,8 @@
+---
+# Clean environment
+
+- name: Remove rolled back version
+  file:
+    state=absent
+    path={{ rollback_releases_path.stdout }}/{{ rollback_current_release_version.stdout }}
+  when: rollback_remove_rolled_back

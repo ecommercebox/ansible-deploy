@@ -1,0 +1,15 @@
+---
+# Create path vars
+
+- local_action:
+    set_fact deploy_release_version={{ lookup('pipe', 'date -u +%Y%m%d%H%M%S') }}
+  run_once: true
+  when: deploy_release_version is not defined
+
+- name: Get release path
+  command: echo "{{ deploy_releases_path.stdout }}/{{ deploy_release_version }}"
+  register: deploy_release_path
+
+- name: Get shared path
+  command: echo "{{ deploy_shared_path.stdout }}/.shared-copy"
+  register: deploy_shared_copy_path

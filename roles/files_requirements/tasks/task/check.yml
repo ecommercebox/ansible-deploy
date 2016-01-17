@@ -1,0 +1,6 @@
+---
+# Check environment
+
+- name: Check files is defined
+  fail: msg="Files '{{ site }}' is not defined."
+  when: files[site] is not defined

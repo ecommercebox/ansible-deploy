@@ -1,0 +1,13 @@
+---
+# Create remote paths
+
+- name: Create remote files path
+  file:
+    state=directory
+    path="{{ path_root['remote'] }}/{{ env }}/shared/{{ files[item.key] }}"
+  with_dict: files | default({})
+
+- name: Create remote files backup path
+  file:
+    state=directory
+    path="{{ path_root['remote'] }}/{{ env }}/{{ path_backups }}/{{ path_files_backups }}"

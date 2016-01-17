@@ -1,0 +1,5 @@
+---
+# Files variables
+
+# files:
+#   default: "sites/default/files" # Project files path relative from path_public.

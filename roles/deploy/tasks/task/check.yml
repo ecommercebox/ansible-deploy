@@ -1,0 +1,6 @@
+---
+# Check environment
+
+- name: Ensure correct environments are set
+  fail: msg="Incorrect environments set"
+  when: "env_src == 'local' and env_dest == 'local'"

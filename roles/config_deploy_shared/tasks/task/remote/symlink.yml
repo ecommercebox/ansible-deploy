@@ -1,0 +1,15 @@
+---
+# Symlink shared config
+
+- name: Ensure shared config are absent in public
+  file:
+    state=absent
+    path="{{ path_root['remote'] }}/{{ env }}/{{ path_public }}/{{ item.value }}"
+  with_dict: config | default({})
+
+- name: Create softlinks for config paths
+  file:
+    state=link
+    path="{{ path_root['remote'] }}/{{ env }}/{{ path_public }}/{{ item.value }}"
+    src="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value }}"
+  with_dict: config | default({})

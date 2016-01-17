@@ -1,0 +1,6 @@
+---
+# Remote tasks
+
+- include: task/remote/setup.yml
+- include: task/remote/symlink.yml
+- include: task/remote/cleanup.yml

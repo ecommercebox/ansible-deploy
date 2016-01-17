@@ -1,0 +1,5 @@
+---
+# Config variables.
+
+# config:
+#   default: "sites/default/settings.env.php" # Project settings paths relative from path.local.public.

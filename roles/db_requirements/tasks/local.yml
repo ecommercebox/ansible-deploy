@@ -1,0 +1,5 @@
+---
+# Local tasks
+
+- include: task/check.yml
+- include: task/local/check.yml

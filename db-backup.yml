@@ -1,0 +1,25 @@
+---
+# Backup database on environment
+
+- name: Backup environment database.
+  hosts: webserver
+  any_errors_fatal: true
+
+  vars_files:
+    - vars/path.yml
+    - vars/environments.yml
+    - vars/database.yml
+
+  vars_prompt:
+    - name: "env"
+      prompt: "Environment source"
+      private: no
+    - name: "site"
+      prompt: "Environment site"
+      default: "default"
+      private: no
+
+  roles:
+    - { role: env_requirements }
+    - { role: db_requirements }
+    - { role: db_backup }

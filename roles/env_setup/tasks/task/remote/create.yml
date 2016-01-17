@@ -1,0 +1,23 @@
+---
+# Create remote paths
+
+- name: Create remote path
+  file:
+    state=directory
+    path={{ path_root['remote'] }}/{{ env }}
+
+- name: Create remote backups path
+  file:
+    state=directory
+    path={{ path_root['remote'] }}/{{ env }}/{{ path_backups }}
+
+- name: Create remote shared path
+  file:
+    state=directory
+    path={{ path_root['remote'] }}/{{ env }}/shared
+
+- name: Create remote environment paths in shared
+  file:
+    state=directory
+    path={{ path_root['remote'] }}/{{ env }}/shared/{{ item }}
+  with_items: path_shared_paths

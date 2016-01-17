@@ -1,0 +1,12 @@
+---
+# Deploy files to remote environment
+
+- name: "Deploy files from destination remote to source remote"
+  synchronize:
+    src="{{ files_deploy_local_src_path }}"
+    dest="{{ files_deploy_local_dest_path }}"
+    set_remote_user="{{ files_deploy_rsync_set_remote_user }}"
+    recursive=yes
+    delete=yes
+    archive=yes
+    compress=yes

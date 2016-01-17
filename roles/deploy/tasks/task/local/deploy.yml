@@ -1,0 +1,12 @@
+---
+# Deploy local code to environment
+
+- name: Rsync application files from local to remote shared copy
+  synchronize:
+    src="{{ path_root['local'] }}/{{ path_public }}/"
+    dest="{{ deploy_shared_copy_path.stdout }}"
+    set_remote_user="{{ deploy_rsync_set_remote_user }}"
+    recursive=yes
+    delete=yes
+    archive=yes
+    compress=yes

@@ -1,0 +1,25 @@
+---
+# Rollback code on environment
+
+- name: Rollback previous deploy.
+  hosts: webserver
+  any_errors_fatal: true
+
+  vars_files:
+    - vars/path.yml
+    - vars/environments.yml
+    - vars/config.yml
+    - vars/files.yml
+    - vars/database.yml
+
+  vars_prompt:
+    - name: "env"
+      prompt: "Source environment"
+      private: no
+
+  roles:
+    - { role: env_requirements }
+    - { role: rollback_requirements }
+    - { role: rollback }
+    - { role: files_setup, when: files is defined }
+    - { role: config_setup, when: config is defined }

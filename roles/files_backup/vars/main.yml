@@ -1,0 +1,7 @@
+---
+# Role variables
+
+files_backup_target_path: "{{ path_root['remote'] }}/{{ env }}/{{ path_backups }}/{{ path_files_backups }}"
+files_backup_target_filename: "{{ env }}--{{ ansible_date_time.date }}--{{ ansible_date_time.time | replace(':', '-') }}.tar.gz"
+files_backup_chdir_path: "{{ path_root['remote'] }}/{{ env }}/shared/{{ files[site] }}/../"
+files_backup_source_path: "{{ files[site] | basename }}"

@@ -1,0 +1,8 @@
+---
+# Push code from shared
+
+- name: Push code from shared copy to public.
+  command: cp -a {{ deploy_shared_copy_path.stdout }} {{ deploy_release_path.stdout }}
+
+- name: Copy release version into REVISION file
+  copy: content={{ deploy_release_version }} dest={{ deploy_release_path.stdout }}/REVISION

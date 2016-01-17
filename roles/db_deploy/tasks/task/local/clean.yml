@@ -1,0 +1,12 @@
+---
+# Post deploy clean
+
+- name: "Delete remote tmp data"
+  file:
+    path="/tmp/{{ mysql_tmp_key }}.sql"
+    state=absent
+
+- name: "Delete local tmp data"
+  local_action: file
+    path="/tmp/{{ mysql_tmp_key }}.sql"
+    state=absent

@@ -1,0 +1,30 @@
+---
+# Deploy database from source to destination
+
+- name: "Create tmp data from remote source database"
+  mysql_db:
+    name="{{ database[env_src][site]['db_name'] }}"
+    login_user="{{ database[env_src][site]['db_user'] }}"
+    login_password="{{ database[env_src][site]['db_pass'] }}"
+    login_host="{{ database[env_src][site]['db_host'] | default('localhost') }}"
+    login_port="{{ database[env_src][site]['db_port'] | default(3306) }}"
+    target="/tmp/{{ mysql_tmp_key }}.sql"
+    state=dump
+
+- name: "Truncate remote destination database"
+  script: ../../../files/truncate.sh
+    {{ database[env_dest][site]['db_name'] }}
+    {{ database[env_dest][site]['db_user'] }}
+    {{ database[env_dest][site]['db_pass'] }}
+    {{ database[env_dest][site]['db_host'] | default('localhost') }}
+    {{ database[env_dest][site]['db_port'] | default(3306) }}
+
+- name: "Import tmp data into remote destination database"
+  mysql_db:
+    name="{{ database[env_dest][site]['db_name'] }}"
+    login_user="{{ database[env_dest][site]['db_user'] }}"
+    login_password="{{ database[env_dest][site]['db_pass'] }}"
+    login_host="{{ database[env_dest][site]['db_host'] | default('localhost') }}"
+    login_port="{{ database[env_dest][site]['db_port'] | default(3306) }}"
+    target="/tmp/{{ mysql_tmp_key }}.sql"
+    state=import

@@ -1,0 +1,12 @@
+---
+# Check remote environment
+
+- name: Check remote files backup path
+  stat: path="{{ path_root['remote'] }}/{{ env }}/{{ path_backups }}/{{ path_files_backups }}"
+  register: files_backup_path
+  failed_when: files_backup_path.stat.exists == false
+
+- name: Check remote files shared path
+  stat: path="{{ path_root['remote'] }}/{{ env }}/shared/{{ files[site] }}"
+  register: files_shared_path
+  failed_when: "files_shared_path.stat.exists == false"

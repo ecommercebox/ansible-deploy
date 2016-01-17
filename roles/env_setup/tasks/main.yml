@@ -1,0 +1,5 @@
+---
+# Environment controller
+
+- include: remote.yml
+  when: env in environments

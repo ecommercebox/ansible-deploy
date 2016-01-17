@@ -1,0 +1,7 @@
+---
+# Post deploy clean
+
+- name: "Delete remote source tmp data"
+  file:
+    path="/tmp/{{ mysql_tmp_key }}.sql"
+    state=absent

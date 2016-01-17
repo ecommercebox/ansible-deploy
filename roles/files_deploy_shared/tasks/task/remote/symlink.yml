@@ -1,0 +1,17 @@
+---
+# Symlink files
+
+- name: Ensure shared files are absent in public
+  file:
+    state=absent
+    path="{{ path_root['remote'] }}/{{ env }}/{{ path_public }}/{{ item.value }}"
+  with_dict: files | default({})
+  when: files is defined
+
+- name: Create softlinks for files paths
+  file:
+    state=link
+    path="{{ path_root['remote'] }}/{{ env }}/{{ path_public }}/{{ item.value }}"
+    src="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value }}"
+  with_dict: files | default({})
+  when: files is defined

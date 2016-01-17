@@ -1,0 +1,5 @@
+---
+# Role variables
+
+db_backup_remote_path: "{{ path_root['remote'] }}/{{ env }}/{{ path_backups }}/{{ path_database_backups }}"
+db_backup_remote_filename: "{{ env }}--{{ ansible_date_time.date }}--{{ ansible_date_time.time | replace(':', '-') }}.sql.gz"

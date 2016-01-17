@@ -1,0 +1,21 @@
+---
+# Remote checks
+
+- name: "Check remote tmp is defined"
+  stat: path="/tmp"
+  register: tmp
+  failed_when: "tmp.stat.exists == false"
+
+- name: "Check remote database backup path"
+  stat: path="{{ path_root['remote'] }}/{{ env }}/{{ path_backups }}/{{ path_database_backups }}"
+  register: db_backup
+  failed_when: db_backup.stat.exists == false
+
+- name: "Check remote db table exists"
+  mysql_db:
+    name="{{ database[env][site]['db_name'] }}"
+    login_user="{{ database[env][site]['db_user'] }}"
+    login_password="{{ database[env][site]['db_pass'] }}"
+    login_host="{{ database[env][site]['db_host'] | default('localhost') }}"
+    login_port="{{ database[env][site]['db_port'] | default(3306) }}"
+    state=present

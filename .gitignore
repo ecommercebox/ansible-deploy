@@ -1,0 +1,4 @@
+env/*
+!env/requirements.txt
+hosts/hosts
+vars/database.yml

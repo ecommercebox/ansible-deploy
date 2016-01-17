@@ -1,0 +1,4 @@
+---
+# Environment Variables
+
+# environments: ['dev', 'stage', 'prod'] # Available environments on remote host.

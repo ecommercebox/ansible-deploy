@@ -1,0 +1,30 @@
+---
+# Deploy code to environment
+
+- name: Deploy files between environments.
+  hosts: webserver
+  any_errors_fatal: true
+
+  vars_files:
+    - vars/path.yml
+    - vars/environments.yml
+    - vars/config.yml
+    - vars/files.yml
+    - vars/database.yml
+
+  vars_prompt:
+    - name: "env_src"
+      prompt: "Source environment"
+      private: no
+    - name: "env_dest"
+      prompt: "Destination environment"
+      private: no
+
+  roles:
+    - { role: env_requirements, env: "{{ env_src }}" }
+    - { role: deploy_requirements, env: "{{ env_src }}" }
+    - { role: env_requirements, env: "{{ env_dest }}" }
+    - { role: deploy_requirements, env: "{{ env_dest }}" }
+    - { role: deploy }
+    - { role: config_deploy_shared, when: config is defined, env: "{{ env_dest }}" }
+    - { role: files_deploy_shared, when: files is defined, env: "{{ env_dest }}" }

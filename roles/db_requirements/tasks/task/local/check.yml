@@ -1,0 +1,17 @@
+---
+# Local checks
+
+- name: "Check local tmp is defined"
+  local_action:
+    stat path="/tmp"
+  register: tmp
+  failed_when: "tmp.stat.exists == false"
+
+- name: "Check local database table exists"
+  local_action: mysql_db
+    name="{{ database[env][site]['db_name'] }}"
+    login_user="{{ database[env][site]['db_user'] }}"
+    login_password="{{ database[env][site]['db_pass'] }}"
+    login_host="{{ database[env][site]['db_host'] | default('localhost') }}"
+    login_port="{{ database[env][site]['db_port'] | default(3306) }}"
+    state=present

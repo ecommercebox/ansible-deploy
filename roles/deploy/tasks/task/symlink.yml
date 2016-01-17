@@ -1,0 +1,8 @@
+---
+# Description
+
+- name: Change softlink to new release
+  file:
+    state=link
+    path={{ path_root['remote'] }}/{{ env_dest }}/{{ path_public }}
+    src={{ deploy_release_path.stdout }}

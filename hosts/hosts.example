@@ -1,0 +1,10 @@
+---
+# Hosts
+
+# [webserver]
+# example.com
+
+# [webserver:vars]
+# ansible_ssh_port=22
+# ansible_ssh_user=user
+# ansible_ssh_pass=pass

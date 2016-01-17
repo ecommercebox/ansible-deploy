@@ -1,0 +1,10 @@
+---
+# Environment checks
+
+- name: "Check database settings is defined"
+  fail: msg="Database '{{ env }}' '{{ site }}' is not defined."
+  when: database[env][site][item] is not defined
+  with_items:
+    - db_user
+    - db_pass
+    - db_name

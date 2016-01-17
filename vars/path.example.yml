@@ -1,0 +1,6 @@
+---
+# Path variables
+
+# path_root:
+#   local: "{{ playbook_dir }}/../../" # Local root path.
+#   remote: "/home/{{ ansible_user_id }}/env" # Remote root path.

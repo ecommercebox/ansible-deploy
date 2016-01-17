@@ -1,0 +1,24 @@
+---
+# Database Variables
+
+# database:
+#   local:
+#     default:
+#       db_user: 'user_local'
+#       db_pass: 'password'
+#       db_name: 'db_local'
+#   dev:
+#     default:
+#       db_user: 'user_dev'
+#       db_pass: 'password'
+#       db_name: 'db_dev'
+#   stage:
+#     default:
+#       db_user: 'user_stage'
+#       db_pass: 'password'
+#       db_name: 'db_stage'
+#   prod:
+#     default:
+#       db_user: 'user_prod'
+#       db_pass: 'password'
+#       db_name: 'db_prod'

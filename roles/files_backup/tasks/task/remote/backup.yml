@@ -1,0 +1,9 @@
+---
+# Backup files
+
+- name: Backup files
+  command: /bin/tar czf
+    "{{ files_backup_target_path }}/{{ files_backup_target_filename }}"
+    "{{ files_backup_source_path }}/"
+  args:
+    chdir: "{{ files_backup_chdir_path }}"

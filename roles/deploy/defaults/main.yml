@@ -1,0 +1,12 @@
+---
+# Default Variables
+
+path_public: "public_html" # Public directory path relative from path_root['remote'].
+path_backups: "backups" # Backup path relative from path_root['remote'].
+path_files_backups: "files" # Backup path relative from path_backups.
+path_database_backups: "database" # Backup path relative from path_backups.
+path_shared_paths: [] # Shared paths relative form path_public
+path_version: "releases" # Releases directory name
+path_shared_paths: [] # Shared paths to symlink to release path
+deploy_keep_releases: 3 # How many release to keep on remote environment
+deploy_rsync_set_remote_user: yes # See [ansible synchronize module](http://docs.ansible.com/ansible/synchronize_module.html). Options are yes, no.

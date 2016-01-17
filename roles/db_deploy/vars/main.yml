@@ -1,0 +1,4 @@
+---
+#  Role variables
+
+mysql_tmp_key: "{{ ansible_date_time.epoch }}"

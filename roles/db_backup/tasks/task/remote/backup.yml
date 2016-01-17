@@ -1,0 +1,12 @@
+---
+# Backup database
+
+- name: Backup remote database
+  mysql_db:
+    name="{{ database[env][site]['db_name'] }}"
+    login_user="{{ database[env][site]['db_user'] }}"
+    login_password="{{ database[env][site]['db_pass'] }}"
+    login_host="{{ database[env][site]['db_host'] | default('localhost') }}"
+    login_port="{{ database[env][site]['db_port'] | default(3306) }}"
+    target="{{ db_backup_remote_path }}/{{ db_backup_remote_filename }}"
+    state=dump

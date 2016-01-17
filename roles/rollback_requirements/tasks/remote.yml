@@ -1,0 +1,5 @@
+---
+# Remote tasks
+# @todo Check for multiple releases
+
+- include: task/remote/check.yml

@@ -1,0 +1,28 @@
+---
+# Check local environment
+# @todo move config paths to config role
+# @todo move files paths to files role
+
+- name: "Check local environment shared paths"
+  local_action: stat
+    path="{{ path_root['local'] }}/{{ path_public }}/{{ item | dirname }}"
+  register: shared_path
+  failed_when: "shared_path.stat.exists == false"
+  with_items: path_shared_paths
+  when: "path_shared_paths is defined"
+
+- name: "Check local environment config paths."
+  local_action: stat
+    path="{{ path_root['local'] }}/{{ path_public }}/{{ item.value | dirname }}"
+  register: config_file
+  failed_when: "config_file.stat.exists == false"
+  with_dict: config | default({})
+  when: "config is defined"
+
+- name: "Check local environment files paths."
+  local_action: stat
+    path="{{ path_root['local'] }}/{{ path_public }}/{{ item.value }}"
+  register: files_path
+  failed_when: "files_path.stat.exists == false"
+  with_dict: files | default({})
+  when: "files is defined"

@@ -1,0 +1,25 @@
+---
+# Create environment
+
+- name: Create environment.
+  hosts: webserver
+  any_errors_fatal: true
+
+  vars_files:
+    - vars/path.yml
+    - vars/environments.yml
+    - vars/config.yml
+    - vars/files.yml
+    - vars/database.yml
+
+  vars_prompt:
+    - name: "env"
+      prompt: "Environment source"
+      private: no
+
+  roles:
+    - env_requirements
+    - env_setup
+    - { role: db_setup, when: database is defined }
+    - { role: files_setup, when: files is defined }
+    - { role: config_setup, when: config is defined }

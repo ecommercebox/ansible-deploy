@@ -1,0 +1,8 @@
+---
+# Symlink shared paths
+
+- name: Change web softlink from current release to previous one
+  file:
+    state=link
+    path={{ path_root['remote'] }}/{{ env }}/{{ path_public }}
+    src={{ rollback_releases_path.stdout }}/{{ rollback_previous_release_version.stdout }}
