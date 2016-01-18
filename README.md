@@ -9,6 +9,9 @@ Provides generalised deployment strategies for:
 This provides support for common deployment strategies for projects such as Wordpress and Drupal. It is capable of
 managing the deployment for single and multisite instances.
 
+Multi-Stage environments are encouraged, as you can push from your local copy to the staging environment. You can
+also deploy code, files and database between environments, eg: dev to stage, stage to prod, prod to dev
+
 ## Setup
 
 1. `virtualenv env && source env/bin/activate`
@@ -75,6 +78,9 @@ files:
 #### Path
 
 ```
+path_root:
+  local: "{{ playbook_dir }}/../../" # Local root path.
+  remote: "/home/{{ ansible_user_id }}/env" # Remote root path.
 path_public: "public_html" # Public directory path relative from path_root['remote'].
 path_backups: "backups" # Backup path relative from path_root['remote'].
 path_files_backups: "files" # Backup path relative from path_backups.
