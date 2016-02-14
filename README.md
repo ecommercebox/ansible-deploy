@@ -133,3 +133,14 @@ rollback_remove_rolled_back: yes # You can change this setting in order to keep 
 * `db-backup.yml` - Backup database on remote host
 * `files-deploy.yml` - Deploy files to remote host
 * `files-backup.yml` - Backup files on remote host
+
+## Ignoring Files
+
+You can specify while files you would like to ignore during the deploy process. Create a `.rsyncignore` file in the local public directory:
+
+```
+# mysite/public_html/.rsync_ignore
+sites/default/files
+settings.*.php
+.DS_Store
+```
