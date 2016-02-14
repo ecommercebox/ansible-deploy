@@ -46,8 +46,9 @@ database:
 
 ```
 config:
-  default: "sites/default/settings.env.php" # Project settings paths relative from path.local.public.
-  test: "sites/test/settings.env.php" # Project settings paths relative from path.local.public.
+  default:
+    src: "default/settings.env.php.j2" # Project settings path template relative from templates.
+    dest: "sites/default/settings.env.php" # Project settings paths relative from path.local.public.
 ```
 
 #### Database

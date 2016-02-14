@@ -8,7 +8,7 @@
 
 - name: Check for local config template
   local_action: stat
-    path="{{ playbook_dir }}/templates/{{ item.value }}.j2"
+    path="{{ playbook_dir }}/templates/{{ item.value['src'] }}"
   register: config_template_path
   failed_when: config_template_path.stat.exists == False
   with_dict: config | default({})

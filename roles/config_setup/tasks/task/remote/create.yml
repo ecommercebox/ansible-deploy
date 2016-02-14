@@ -3,12 +3,12 @@
 
 - name: Create config directory
   file:
-    path="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value | dirname }}"
+    path="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value['dest'] | dirname }}"
     state=directory
   with_dict: config | default({})
 
 - name: Create config file
   template:
-    src="{{ playbook_dir }}/templates/{{ item.value }}.j2"
-    dest="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value }}"
+    src="{{ playbook_dir }}/templates/{{ item.value['src'] }}"
+    dest="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value['dest'] }}"
   with_dict: config | default({})
