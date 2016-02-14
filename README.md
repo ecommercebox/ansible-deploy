@@ -26,6 +26,20 @@ also deploy code, files and database between environments, eg: dev to stage, sta
 5. Copy `vars/files.example.yml` to `vars/files.yml` and specify files variables
 6. Copy `vars/path.example.yml` to `vars/path.yml` and specify path variables
 
+## Templates
+
+Templates for config files are stored under the 'templates' directory. A typical template file may look
+something like this:
+
+```
+// settings.env.yml
+database:
+  name: {{ database[env][item.key]['db_name'] }}
+  username: {{ database[env][item.key]['db_user'] }}
+  password: {{ database[env][item.key]['db_pass'] }}
+);
+```
+
 ### Available Variables
 
 #### Config
