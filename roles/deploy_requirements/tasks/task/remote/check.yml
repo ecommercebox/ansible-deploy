@@ -13,7 +13,7 @@
 
 - name: "Check remote environment config files."
   stat:
-    path="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value | dirname }}"
+    path="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value['dest'] | dirname }}"
   register: config_file
   failed_when: "config_file.stat.exists == false"
   with_dict: config | default({})

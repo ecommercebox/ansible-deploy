@@ -13,7 +13,7 @@
 
 - name: "Check local environment config paths."
   local_action: stat
-    path="{{ path_root['local'] }}/{{ path_public }}/{{ item.value | dirname }}"
+    path="{{ path_root['local'] }}/{{ path_public }}/{{ item.value['dest'] | dirname }}"
   register: config_file
   failed_when: "config_file.stat.exists == false"
   with_dict: config | default({})
