@@ -5,4 +5,5 @@
   file:
     state=absent
     path={{ rollback_releases_path.stdout }}/{{ rollback_current_release_version.stdout }}
+    mode=755
   when: rollback_remove_rolled_back
