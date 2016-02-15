@@ -1,9 +1,16 @@
 ---
 # Clean environment
 
-- name: Remove rolled back version
+- name: Remove rolled back version | Permissions
+  file:
+    state=directory
+    path={{ rollback_releases_path.stdout }}/{{ rollback_current_release_version.stdout }}
+    recurse=yes
+    mode=0755
+  when: rollback_remove_rolled_back
+
+- name: Remove rolled back version | Remove
   file:
     state=absent
     path={{ rollback_releases_path.stdout }}/{{ rollback_current_release_version.stdout }}
-    mode=755
   when: rollback_remove_rolled_back
