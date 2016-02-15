@@ -11,7 +11,7 @@
   with_items: path_shared_paths
   when: "path_shared_paths is defined"
 
-- name: "Check remote environment config files."
+- name: "Check remote environment config paths."
   stat:
     path="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value['dest'] | dirname }}"
   register: config_file
