@@ -33,10 +33,11 @@ something like this:
 
 ```
 # templates/default/settings.php.j2
-database:
-  name: {{ database[env][item.key]['db_name'] }}
-  username: {{ database[env][item.key]['db_user'] }}
-  password: {{ database[env][item.key]['db_pass'] }}
+$database = array(
+    'database' => '{{ database[env][item.key]['db_name'] }}',
+    'username' => '{{ database[env][item.key]['db_user'] }}',
+    'password' => '{{ database[env][item.key]['db_pass'] }}',
+);
 ```
 
 ### Available Variables
