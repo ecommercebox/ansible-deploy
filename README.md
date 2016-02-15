@@ -32,7 +32,7 @@ Templates for config files are stored under the 'templates' directory. A typical
 something like this:
 
 ```
-// settings.env.yml
+# templates/default/settings.php.j2
 database:
   name: {{ database[env][item.key]['db_name'] }}
   username: {{ database[env][item.key]['db_user'] }}
@@ -44,6 +44,7 @@ database:
 #### Config
 
 ```
+# variables/config.yml
 config:
   default:
     src: "default/settings.env.php.j2" # Project settings template relative from local templates path.
@@ -53,6 +54,7 @@ config:
 #### Database
 
 ```
+# variables/database.yml
 database:
   local:
     default:
@@ -79,12 +81,14 @@ database:
 #### Environments
 
 ```
+# variables/environments.yml
 environments: ['dev', 'stage', 'prod'] # Available environments on remote host.
 ```
 
 #### Files
 
 ```
+# variables/files.yml
 files:
   default: "sites/default/files" # Project files path relative from path_public.
 ```
@@ -92,6 +96,7 @@ files:
 #### Path
 
 ```
+# variables/path.yml
 path_root:
   local: "{{ playbook_dir }}/../../" # Local root path.
   remote: "/home/{{ ansible_user_id }}/env" # Remote root path.
@@ -108,13 +113,13 @@ path_shared_paths: [] # Shared paths to symlink to release path
 
 ```
 deploy_keep_releases: 3 # How many release to keep on remote environment
-deploy_rsync_set_remote_user: yes # See [ansible synchronize module](http://docs.ansible.com/ansible/synchronize_module.html). Options are yes, no.
+deploy_rsync_set_remote_user: yes # See [ansible synchronize module](http:#docs.ansible.com/ansible/synchronize_module.html). Options are yes, no.
 ```
 
 #### Files Deploy
 
 ```
-files_deploy_rsync_set_remote_user: yes # See [ansible synchronize module](http://docs.ansible.com/ansible/synchronize_module.html). Options are yes, no.
+files_deploy_rsync_set_remote_user: yes # See [ansible synchronize module](http:#docs.ansible.com/ansible/synchronize_module.html). Options are yes, no.
 ```
 
 #### Rollback
