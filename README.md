@@ -12,6 +12,17 @@ managing the deployment for single and multisite instances.
 Multi-Stage environments are encouraged, as you can push from your local copy to the staging environment. You can
 also deploy code, files and database between environments, eg: dev to stage, stage to prod, prod to dev
 
+## Requirements
+
+1. Python's `MySQLdb` 1.2.5 - From my experience with Mac, you may need to install `mysql` via `homebrew`. [See post on stack overflow](http://stackoverflow.com/questions/17599830/installing-mysql-python-on-mac)
+2. Ansible 1.9.4 - Preferably installed via `pip`, with 'requirements.txt'
+3. Python 2.7.0 - Not tested with Python 3.
+
+### Preferable
+
+1. Pip 8.0.2 - Package manager for Python.
+2. Virtualenv - Virtual environments for Python.
+
 ## Setup
 
 1. `virtualenv env && source env/bin/activate`
@@ -152,3 +163,4 @@ You can specify while files you would like to ignore during the deploy process. 
 - node_modules
 - bower_components
 ```
+
