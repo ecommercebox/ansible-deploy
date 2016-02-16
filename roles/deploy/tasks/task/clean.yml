@@ -2,9 +2,5 @@
 # Remove old releases.
 
 - name: Clean up releases
-  shell: ls -1dt {{ deploy_releases_path.stdout }}/* | tail -n +{{ deploy_keep_releases | int + 1 }} | xargs chmod -R 777
-  when: deploy_keep_releases > 0
-
-- name: Clean up releases
-  shell: ls -1dt {{ deploy_releases_path.stdout }}/* | tail -n +{{ deploy_keep_releases | int + 1 }} | xargs rm -rf
+  shell: ls -1dt {{ deploy_releases_path.stdout }}/* | tail -n +{{ deploy_keep_releases | int + 1 }} | xargs -I % sh -c 'chmod -R 755 %; rm -rf %;'
   when: deploy_keep_releases > 0
