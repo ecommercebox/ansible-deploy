@@ -145,7 +145,10 @@ You can specify while files you would like to ignore during the deploy process. 
 
 ```
 # mysite/public_html/.rsync-filter
-sites/default/files
-settings.*.php
-.DS_Store
+- sites/*/files
+- settings.*.php
+- .DS_Store
+- .git
+- node_modules
+- bower_components
 ```
