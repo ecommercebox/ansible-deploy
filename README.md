@@ -141,10 +141,10 @@ rollback_remove_rolled_back: yes # You can change this setting in order to keep 
 
 ## Ignoring Files
 
-You can specify while files you would like to ignore during the deploy process. Create a `.rsyncignore` file in the local public directory:
+You can specify while files you would like to ignore during the deploy process. Create a `.rsync-filter` file in the local public directory:
 
 ```
-# mysite/public_html/.rsync_ignore
+# mysite/public_html/.rsync-filter
 sites/default/files
 settings.*.php
 .DS_Store
