@@ -164,3 +164,10 @@ You can specify while files you would like to ignore during the deploy process. 
 - bower_components
 ```
 
+## Todo
+
+You can see [my todo list](https://github.com/ellioseven/ansible-deploy/wiki/Todo).
+
+## Issues
+
+Please [submit an issue](https://github.com/ellioseven/ansible-deploy/issues) if you run into any problems.
