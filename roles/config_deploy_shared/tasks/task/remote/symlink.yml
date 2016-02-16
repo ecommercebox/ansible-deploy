@@ -7,9 +7,17 @@
     path="{{ path_root['remote'] }}/{{ env }}/{{ path_public }}/{{ item.value['dest'] }}"
   with_dict: config | default({})
 
+- name: Ensure config dir exists and is writable
+  file:
+    state=directory
+    mode=0755
+    path="{{ path_root['remote'] }}/{{ env }}/{{ path_public }}/{{ item.value['dest'] | dirname }}"
+  with_dict: config | default({})
+
 - name: Create softlinks for config paths
   file:
     state=link
+    mode=0755
     path="{{ path_root['remote'] }}/{{ env }}/{{ path_public }}/{{ item.value['dest'] }}"
     src="{{ path_root['remote'] }}/{{ env }}/shared/{{ item.value['dest'] }}"
   with_dict: config | default({})
