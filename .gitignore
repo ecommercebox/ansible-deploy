@@ -1,4 +1,6 @@
 env/*
 !env/requirements.txt
 hosts/hosts
-vars/database.yml
+vars/*
+!vars/*.example.yml
+*.retry
