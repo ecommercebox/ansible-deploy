@@ -11,10 +11,10 @@
     - vars/database.yml
 
   vars_prompt:
-    - name: "env_src"
+    - name: "env_src_prompt"
       prompt: "Environment source"
       private: no
-    - name: "env_dest"
+    - name: "env_dest_prompt"
       prompt: "Environment destination"
       private: no
     - name: "site"
@@ -23,8 +23,8 @@
       private: no
 
   roles:
-    - { role: env_requirements, env: "{{ env_src }}" }
-    - { role: db_requirements, env: "{{ env_src }}" }
-    - { role: env_requirements, env: "{{ env_dest }}" }
-    - { role: db_requirements, env: "{{ env_dest }}" }
-    - { role: db_deploy, env_src: "{{ env_src }}", env_dest: "{{ env_dest }}" }
+    - { role: env_requirements, env: "{{ env_src_prompt }}" }
+    - { role: db_requirements, env: "{{ env_src_prompt }}" }
+    - { role: env_requirements, env: "{{ env_dest_prompt }}" }
+    - { role: db_requirements, env: "{{ env_dest_prompt }}" }
+    - { role: db_deploy, env_src: "{{ env_src_prompt }}", env_dest: "{{ env_dest_prompt }}" }

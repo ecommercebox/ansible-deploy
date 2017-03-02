@@ -1,6 +1,9 @@
 ---
 # Environment controller
 
+- debug: var=env_src
+- debug: var=env_dest
+
 - include: local.yml
   when: env_src == 'local' and env_dest in environments
 
